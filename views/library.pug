@@ -1,0 +1,36 @@
+extends layout
+block header
+    link(rel='stylesheet', href='/library.css')
+    script(src="ajax.js")
+
+block content
+    button(id="openDialogButton" onclick='loadPost(this)') Добавить книгу
+    label(for="availabilityCheckbox") В наличии
+    input(type="checkbox", id="availabilityCheckbox", onclick='loadFilterStock()')
+
+    label(for="availabilityCheckbox") Возврат просрочен
+    input(type="checkbox", id="returnExpiredCheckbox", onclick='loadFilterExpired()')
+    dialog(id="myDialog")
+        h2 Change Values
+        label(for="inputTitle") Title:
+        input(type="text", id="inputTitle")
+
+        label(for="inputAuthor") Author:
+        input(type="text", id="inputAuthor")
+
+        llabel(for="inputYear") Year:
+        input(type="text", id="inputYear")
+
+        button(id="applyButton") Apply
+        button(id="closeDialogButton") Close
+
+    h1 Книги:
+        ul(id="bookList")
+            each book in books
+                li
+                    a(href=`/books/${book.id}`) #{book.title}
+                    span(class='book_field') Автор: #{book.author}
+                    span(class='book_field') Год выпуска: #{book.releaseYear}
+                    span(class='book_field') Возврат: #{book.returnDate}
+block scripts
+    //script(src = "add_book.js")

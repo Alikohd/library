@@ -1,0 +1,72 @@
+/* Основные стили для страницы книги */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+p {
+    margin: 10px 0;
+    color: #555;
+}
+
+a {
+    text-decoration: none;
+    color: #0077B5;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none; /* Убираем маркеры перед элементами списка */
+    padding: 0;
+}
+
+/* Стили для элементов в наличии и отсутствии */
+.in-stock {
+    color: #008000; /* Зеленый цвет для "В наличии" */
+}
+
+.not-in-stock {
+    color: #FF0000; /* Красный цвет для "Нет в наличии" */
+}
+
+/* Стиль кнопок */
+#addReader,
+#returnToListButton,
+#deleteBookButton {
+    background-color: #007BFF; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    border: none; /* Убираем границу */
+    padding: 10px 20px; /* Отступы */
+    margin-right: 10px; /* Отступ справа между кнопками */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    border-radius: 4px; /* Скругление углов */
+    font-size: 16px; /* Размер текста */
+    transition: background-color 0.3s, color 0.3s; /* Плавное изменение цвета */
+}
+
+/* Стиль кнопок при наведении */
+#addReader:hover,
+#returnToListButton,
+#deleteBookButton:hover {
+    background-color: #0056b3; /* Изменяем цвет фона при наведении */
+}
+
+/* Остальные стили для элементов, при необходимости */
+

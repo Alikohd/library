@@ -1,0 +1,38 @@
+[
+  {
+    "id": 2,
+    "title": "Война и мир",
+    "author": "Л.Н. Толстой",
+    "releaseYear": "1867",
+    "returnDate": null,
+    "inStock": true,
+    "reader": null
+  },
+  {
+    "id": 3,
+    "title": "Идиот",
+    "author": "Ф.М. Достоевский",
+    "releaseYear": "1869",
+    "returnDate": null,
+    "inStock": true,
+    "reader": null
+  },
+  {
+    "id": 4,
+    "title": "9999",
+    "author": "999",
+    "releaseYear": "щщщ",
+    "returnDate": null,
+    "inStock": true,
+    "reader": null
+  },
+  {
+    "id": 5,
+    "title": "asdasd",
+    "author": "asdsad",
+    "releaseYear": "1234",
+    "returnDate": null,
+    "inStock": true,
+    "reader": null
+  }
+]

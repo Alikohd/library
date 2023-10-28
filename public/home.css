@@ -1,0 +1,23 @@
+/* Стили для заголовка h1 */
+h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+/* Стили для абзацев p */
+p {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #666;
+}
+
+/* Стили для кнопки */
+button#save-books-button {
+    background-color: #333;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

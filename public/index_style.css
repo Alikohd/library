@@ -1,0 +1,55 @@
+/* Установка общих стилей для body и html */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.header {
+    text-align: left; /* Выравнивание по левому краю */
+    background-color: #333; /* Цвет фона шапки */
+    padding: 20px;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navigate-bar {
+    /*display: block;*/
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.navigate-bar:hover {
+    color: #00B7FF; /* Цвет при наведении */
+}
+
+/* Стили для иконок */
+.fa-solid.fa-house,
+.fa-solid.fa-book-open {
+    font-size: 48px; /* Размер иконок */
+    margin-right: 10px; /* Расстояние между иконками и текстом */
+}
+
+/* Стили для .container и .content */
+.container {
+    background-color: white; /* Цвет фона контейнера */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Стили для заголовка */
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Стили для блока scripts (если нужны) */
+.scripts {
+    /* Ваши стили для скриптов */
+}

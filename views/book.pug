@@ -1,0 +1,51 @@
+extends layout
+block header
+    link(rel='stylesheet', href='/book.css')
+    script(src="../ajax.js")
+
+block content
+    h1(id="bookTitle") #{book.title}
+    ul(id="bookId") #{book.id}
+        li
+            p Автор: #{book.author}
+            p Год выпуска: #{book.releaseYear}
+            p Дата возврата: #{book.returnDate}
+            p В наличии: #{book.inStock ? 'Да' : 'Нет'}
+            p Читатель: #{book.reader}
+
+    button(id="addReader" onclick='loadReaderPost()') Задать читателя
+    button(id="deleteBookButton" onclick='loadBookDelete()') Удалить книгу
+    button(id="returnToListButton" onclick='loadChangePut()') Изменить книгу
+
+    dialog(id="readerDialog")
+            h2 Change Values
+            label(for="inputName") Name:
+            input(type="text", id="inputName")
+
+            label(for="inputDate") Date:
+            input(type="date", id="inputDate")
+
+            button(id="applyReaderButton") Apply
+            button(id="deleteReaderButton" onclick='loadReaderDelete()') Delete
+            button(id="closeReaderDialogButton" onclick='') Close
+
+
+    dialog(id="changeDialog")
+        h2 Change Values
+        label(for="inputBookAuthor") Author:
+        input(type="text", id="inputBookAuthor")
+
+        label(for="inputBookTitle") Title:
+        input(type="text", id="inputBookTitle")
+
+        label(for="inputBookYear") Year:
+        input(type="text", id="inputBookYear")
+
+        button(id="applyChangeButton") Apply
+        button(id="closeChangeDialogButton") Close
+
+
+
+
+    //block scripts
+    //    script(src='/scripts/index.js' type='module')

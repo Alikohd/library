@@ -1,0 +1,19 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/index_style.css')
+        script(src="https://kit.fontawesome.com/e96f2abaa6.js" crossorigin="anonymous")
+        block header
+    body
+        block outer
+        div(class='header')
+            a(href='/' class='navigate-bar')
+                i(class='fa-solid fa-house')
+                span Home
+            a(href='/library' class='navigate-bar')
+                i(class='fa-solid fa-book-open')
+                span Library
+        div(class='container')
+            block content
+        block scripts
