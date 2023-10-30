@@ -1,3 +1,15 @@
+function resetFilters(){
+    callAjaxGet((responseData)=>{
+        var bookList = document.getElementById('bookList');
+        var availabilityCheckbox = document.getElementById('availabilityCheckbox');
+        bookList.innerHTML = ''
+        const booksData = responseData.booksData;
+        booksData.forEach(function (book) {
+            const listItem = createBookElement(book)
+            bookList.appendChild(listItem);
+        })
+    })
+}
 function loadFilterStock(){
     callAjaxGet((responseData)=>{
         var bookList = document.getElementById('bookList');
@@ -7,29 +19,10 @@ function loadFilterStock(){
 
         booksData.forEach(function (book) {
             if (availabilityCheckbox.checked && !book.inStock) {
-                return; // Пропустить книги, если чекбокс отмечен и нет даты возврата
+                return; // Пропустить книги, если чекбокс отмечен и книга не в наличии
             }
 
-            const listItem = document.createElement('li');
-            const title = document.createElement('a');
-            title.setAttribute('href', `/books/${book.id}`);
-            title.textContent = book.title;
-            listItem.appendChild(title);
-            const authorSpan = document.createElement('span');
-            authorSpan.className = 'book_field';
-            authorSpan.textContent = 'Автор: ' + book.author;
-            listItem.appendChild(authorSpan);
-
-            const yearSpan = document.createElement('span');
-            yearSpan.className = 'book_field';
-            yearSpan.textContent = 'Год выпуска: ' + book.releaseYear;
-            listItem.appendChild(yearSpan);
-
-            const returnSpan = document.createElement('span');
-            returnSpan.className = 'book_field';
-            returnSpan.textContent = 'Возврат: ' + (book.returnDate ? book.returnDate : '')
-            listItem.appendChild(returnSpan);
-
+            const listItem = createBookElement(book)
             bookList.appendChild(listItem);
         })
     })
@@ -43,34 +36,12 @@ function loadFilterExpired(){
         bookList.innerHTML = ''
         const booksData = responseData.booksData;
         booksData.forEach(function (book) {
-            let i = 0
-            console.log("kniga", booksData[i]);
-            // console.log("date", Date.now());
-            // console.log(Date.parse(book.returnDate))
-            if ((expiredCheckbox.checked) && (Date.parse(booksData[i].returnDate) < Date.now() || booksData[i].returnDate === null)) {
+            console.log(`kniga`, book);
+            if (expiredCheckbox.checked  && (book.returnDate === null || Date.parse(book.returnDate) > Date.now())) {
                 return; // Пропустить книги, если чекбокс отмечен и нет даты возврата
             }
 
-            const listItem = document.createElement('li');
-            const title = document.createElement('a');
-            title.setAttribute('href', `/books/${book.id}`);
-            title.textContent = book.title;
-            listItem.appendChild(title);
-            const authorSpan = document.createElement('span');
-            authorSpan.className = 'book_field';
-            authorSpan.textContent = 'Автор: ' + book.author;
-            listItem.appendChild(authorSpan);
-
-            const yearSpan = document.createElement('span');
-            yearSpan.className = 'book_field';
-            yearSpan.textContent = 'Год выпуска: ' + book.releaseYear;
-            listItem.appendChild(yearSpan);
-
-            const returnSpan = document.createElement('span');
-            returnSpan.className = 'book_field';
-            returnSpan.textContent = 'Возврат: ' + (book.returnDate ? book.returnDate : '')
-            listItem.appendChild(returnSpan);
-
+            const listItem = createBookElement(book)
             bookList.appendChild(listItem);
         })
     })
@@ -91,6 +62,13 @@ function loadPost() {
 
     closeDialogButton.addEventListener('click', function() {
         myDialog.close();
+    });
+
+    inputYear.addEventListener('input', function () {
+        let enteredValue = inputYear.value;
+        if (parseInt(enteredValue) >= 2023) {
+            inputYear.value = '2023';
+        }
     });
 
     applyButton.addEventListener('click', async function () {
@@ -283,7 +261,20 @@ function loadReaderPost() {
     closeDialogButton.addEventListener('click', function() {
         myDialog.close();
     });
+    inputDate.addEventListener('input', function () {
+        const enteredDate = inputDate.value;
 
+        const minDate = new Date('2023-01-01');
+        const maxDate = new Date('2023-12-31');
+        const selectedDate = new Date(enteredDate);
+
+        if (selectedDate < minDate) {
+            // inputDate.value = '2000-01-01'; // мин дата
+            console.log("min_data")
+        } else if (selectedDate > maxDate) {
+            inputDate.value = '2025-01-01'; // макс дата
+        }
+    });
 
     applyButton.addEventListener('click', async function () {
         const name = inputName.value;
@@ -367,6 +358,13 @@ function loadChangePut() {
         myDialog.close();
     });
 
+    inputYear.addEventListener('input', function () {
+        let enteredValue = inputYear.value;
+        if (parseInt(enteredValue) >= 2023) {
+            inputYear.value = '2023';
+        }
+    });
+
     applyButton.addEventListener('click', async function () {
         const author = inputAuthor.value;
         const title = inputTitle.value;
@@ -390,7 +388,7 @@ function loadChangePut() {
                 const returnDate = document.createElement('p');
                 returnDate.textContent = "Дата возврата: " + (book.returnDate ? book.returnDate : '');
                 const inStock = document.createElement('p');
-                inStock.textContent = "В наличии: " + book.inStock;
+                inStock.textContent = "В наличии: " + (book.inStock ? "Да": "Нет");
                 const reader = document.createElement('p');
                 reader.textContent = "Читатель: " + (book.reader ? book.reader : '');
 
@@ -427,7 +425,31 @@ function callAjaxGet(callback) {
 
     xhttp.send();
 
-
-
 }
+
+function createBookElement(book) {
+    const listItem = document.createElement('li');
+    const title = document.createElement('a');
+    title.setAttribute('href', `/books/${book.id}`);
+    title.textContent = book.title;
+    listItem.appendChild(title);
+
+    const authorSpan = createBookFieldElement('Автор: ' + book.author);
+    const yearSpan = createBookFieldElement('Год выпуска: ' + book.releaseYear);
+    const returnSpan = createBookFieldElement('Возврат: ' + (book.returnDate ? book.returnDate : ''));
+
+    listItem.appendChild(authorSpan);
+    listItem.appendChild(yearSpan);
+    listItem.appendChild(returnSpan);
+
+    return listItem;
+}
+
+function createBookFieldElement(text) {
+    const span = document.createElement('span');
+    span.className = 'book_field';
+    span.textContent = text;
+    return span;
+}
+
 

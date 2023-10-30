@@ -52,7 +52,7 @@ label {
     color: #555; /* Цвет текста */
 }
 
-input[type="checkbox"] {
+input[type="radio"] {
     transform: scale(1.5); /* Увеличить размер чекбоксов */
     margin-right: 30px; /* Отступ между чекбоксом и текстом */
 }

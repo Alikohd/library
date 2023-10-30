@@ -19,20 +19,20 @@
   },
   {
     "id": 4,
-    "title": "9999",
-    "author": "999",
-    "releaseYear": "щщщ",
-    "returnDate": null,
-    "inStock": true,
-    "reader": null
+    "title": "Последнее желание",
+    "author": "Анджей Сапковский",
+    "releaseYear": "1993",
+    "returnDate": "2023-07-13",
+    "inStock": false,
+    "reader": "Геральт из Ривии"
   },
   {
     "id": 5,
-    "title": "asdasd",
-    "author": "asdsad",
-    "releaseYear": "1234",
-    "returnDate": null,
-    "inStock": true,
-    "reader": null
+    "title": "Государь",
+    "author": "Н. Макиавелли",
+    "releaseYear": "1532",
+    "returnDate": "2023-09-26",
+    "inStock": false,
+    "reader": "Валерий Нечаяев"
   }
 ]

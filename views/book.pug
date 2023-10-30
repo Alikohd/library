@@ -18,31 +18,31 @@ block content
     button(id="returnToListButton" onclick='loadChangePut()') Изменить книгу
 
     dialog(id="readerDialog")
-            h2 Change Values
-            label(for="inputName") Name:
+            h2 Введите данные о читателе
+            label(for="inputName") Имя:
             input(type="text", id="inputName")
 
-            label(for="inputDate") Date:
-            input(type="date", id="inputDate")
+            label(for="inputDate") Дата возврата:
+            input(type="date", id="inputDate", max="2023-12-31")
 
-            button(id="applyReaderButton") Apply
-            button(id="deleteReaderButton" onclick='loadReaderDelete()') Delete
-            button(id="closeReaderDialogButton" onclick='') Close
+            button(id="applyReaderButton") Применить
+            button(id="deleteReaderButton" onclick='loadReaderDelete()') Вернуть книгу
+            button(id="closeReaderDialogButton" onclick='') Закрыть
 
 
     dialog(id="changeDialog")
-        h2 Change Values
-        label(for="inputBookAuthor") Author:
+        h2 Изменить данные о книге
+        label(for="inputBookAuthor") Автор:
         input(type="text", id="inputBookAuthor")
 
-        label(for="inputBookTitle") Title:
+        label(for="inputBookTitle") Название:
         input(type="text", id="inputBookTitle")
 
-        label(for="inputBookYear") Year:
-        input(type="text", id="inputBookYear")
+        label(for="inputBookYear") Год выпуска:
+        input(type="number", id="inputBookYear", min = "0")
 
-        button(id="applyChangeButton") Apply
-        button(id="closeChangeDialogButton") Close
+        button(id="applyChangeButton") Применить
+        button(id="closeChangeDialogButton") Закрыть
 
 
 

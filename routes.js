@@ -55,9 +55,9 @@ router.put('/books/:id', (req, res, next) => {
     let body = req.body
     for (book of booksData) {
         if (book.id === parseInt(id)) {
-            book.author = body.author
-            book.title = body.title
-            book.releaseYear = body.year
+            book.author = body.author ? body.author: book.author
+            book.title = body.title ? body.title: book.title
+            book.releaseYear = body.year ? body.year: book.releaseYear
             finded = book
         }
     }

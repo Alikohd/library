@@ -5,24 +5,29 @@ block header
 
 block content
     button(id="openDialogButton" onclick='loadPost(this)') Добавить книгу
-    label(for="availabilityCheckbox") В наличии
-    input(type="checkbox", id="availabilityCheckbox", onclick='loadFilterStock()')
 
-    label(for="availabilityCheckbox") Возврат просрочен
-    input(type="checkbox", id="returnExpiredCheckbox", onclick='loadFilterExpired()')
+    label(for="availabilityCheckbox") В наличии
+    input(type="radio", id="availabilityCheckbox", name="filterType", value="stock", onclick='loadFilterStock()')
+
+    label(for="returnExpiredCheckbox") Возврат просрочен
+    input(type="radio", id="returnExpiredCheckbox", name="filterType", value="expired", onclick='loadFilterExpired()')
+
+    label(for="returnExpiredCheckbox") Сброс
+    input(type="radio", id="resetFilters", name="filterType", value="reset", onclick='resetFilters()')
+
     dialog(id="myDialog")
-        h2 Change Values
-        label(for="inputTitle") Title:
+        h2 Введите данные о книге
+        label(for="inputTitle") Название:
         input(type="text", id="inputTitle")
 
-        label(for="inputAuthor") Author:
+        label(for="inputAuthor") Автор:
         input(type="text", id="inputAuthor")
 
-        llabel(for="inputYear") Year:
-        input(type="text", id="inputYear")
+        llabel(for="inputYear") Год выпуска:
+        input(type="number", id="inputYear")
 
-        button(id="applyButton") Apply
-        button(id="closeDialogButton") Close
+        button(id="applyButton") Применить
+        button(id="closeDialogButton") Закрыть
 
     h1 Книги:
         ul(id="bookList")
